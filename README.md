@@ -11,3 +11,7 @@ Python 3.8+ is required in order to run Yamashiro. Here's the download link:
 
 | Python Downloads|                 |
 | https://www.python.org/downloads/ |
+
+| Download Python |                                   |
+| --------------- | --------------------------------- |
+| Releases        | https://www.python.org/downloads/ |
