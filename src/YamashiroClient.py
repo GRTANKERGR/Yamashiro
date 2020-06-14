@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import discord
 
 class YamashiroClient(discord.Client):
