@@ -17,4 +17,5 @@ Python 3.7+ is required in order to run Yamashiro. Here's the download link:
 
 ## Acknowledgements
 This discord bot is able to play music using Wavelink: https://github.com/PythonistaGuild/Wavelink
+
 This discord bot is made using Discord.py: https://github.com/Rapptz/discord.py
