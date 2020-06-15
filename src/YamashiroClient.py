@@ -1,14 +1,20 @@
 #!/usr/bin/env python
+import os
 import discord
+from discord.ext import commands
 
-class YamashiroClient(discord.Client):
+client = commands.Bot(command_prefix='$')
 
-    async def on_ready(self):
-        print("Yamashiro is ready!")
+@client.command()
+async def load(ctx, extension):
+    client.load_extension(f"cogs.{extension}")
 
-    async def on_message(self, message):
-        print('Message from {0.author}: {0.content}'.format(message))
+@client.command()
+async def unload(ctx, extension):
+    client.unload_extension(f"cogs.{extension}")
 
+for filename in os.listdir("./src/cogs"):
+    if filename.endswith(".py"):
+        client.load_extension(f"cogs.{filename[:-3]}")
 
-client = YamashiroClient()
-client.run("NzE5OTA2MzAyMDM3NTkwMTM4.XuI3Gg.1HkD1dm9tBhcDpwdPv92bjZqqho")
+client.run("NzE5OTA2MzAyMDM3NTkwMTM4.XudMZg.PuTn4NXCP3HDQy8Ee4S1nuVZr7k")
