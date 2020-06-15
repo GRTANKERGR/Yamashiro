@@ -13,7 +13,7 @@ class Clear(commands.Cog):
         if message_limit > 1000:
             await ctx.send("I can't delete that many messages! Choose a number between 1 to 1000")
         elif message_limit < 1000:
-            await ctx.channel.purge(limit=message_limit)
+            await ctx.channel.purge(limit=message_limit + 1)
 
 def setup(client):
     client.add_cog(Clear(client))
