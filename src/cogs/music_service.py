@@ -7,17 +7,6 @@ from discord.ext import commands
 url_rx = re.compile(r'https?://(?:www\.)?.+')
 
 
-class Bot(commands.Bot):
-
-    def __init__(self):
-        super(Bot, self).__init__(command_prefix=['audio ', 'wave ','aw '])
-
-        self.add_cog(Music(self))
-
-    async def on_ready(self):
-        print(f'Logged in as {self.user.name} | {self.user.id}')
-
-
 class Music(commands.Cog):
 
     def __init__(self, bot):
