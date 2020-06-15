@@ -16,5 +16,6 @@ async def unload(ctx, extension):
 for filename in os.listdir("./src/cogs"):
     if filename.endswith(".py"):
         client.load_extension(f"cogs.{filename[:-3]}")
+        client.load_extension(f"cogs.music.{filename[:-3]}")
 
 client.run("NzE5OTA2MzAyMDM3NTkwMTM4.XudMZg.PuTn4NXCP3HDQy8Ee4S1nuVZr7k")
