@@ -2,7 +2,7 @@
 A private discord bot made using Discord.py
 
 [![Build Status](https://travis-ci.com/Whatareyoulaughingat/Yamashiro.svg?token=ETauFYxNjrcyenZSDbJd&branch=master)](https://travis-ci.com/Whatareyoulaughingat/Yamashiro)
-![GitHub](https://img.shields.io/github/license/Whatareyoulaughingat/Yamashiro)
+
 
 **This is a work in progress bot. Don't expect it to have complete functionality (for now)**
 
