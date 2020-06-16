@@ -6,7 +6,7 @@ A private discord bot made using Discord.py
 
 **This is a work in progress bot. Don't expect it to have complete functionality (for now)**
 
-## Requirments
+## Requirements
 Python 3.7+ is required in order to run Yamashiro. Here's the download link:
 
 | Download Python |                                   |
