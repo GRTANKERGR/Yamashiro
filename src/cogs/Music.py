@@ -35,11 +35,25 @@ class Music(commands.Cog):
             try:
                 channel = ctx.author.voice.channel
             except AttributeError:
+                await ctx.send("No channel to join. Please either specify a valid channel or join one.")
                 raise discord.DiscordException('No channel to join. Please either specify a valid channel or join one.')
 
         player = self.bot.wavelink.get_player(ctx.guild.id)
-        await ctx.send(f'Connecting to **`{channel.name}`**')
         await player.connect(channel.id)
+        await ctx.send(f'Connected to **`{channel.name}`**')
+
+    @commands.command(name="leave")
+    async def leave(self, ctx, channel: discord.VoiceChannel=None):
+        if not channel:
+            try:
+                channel = ctx.author.voice.channel
+            except AttributeError:
+                await ctx.send("I'm not in a voice channel!")
+                raise discord.DiscordException("User executed leave command without the yama ever joining in.. :pepega:")
+
+            player = self.bot.wavelink.get_player(ctx.guild.id)
+            await player.disconnect()
+            await ctx.send(f"I've left **{channel.name}**")
 
     @commands.command()
     async def play(self, ctx, *, query: str):
@@ -54,6 +68,28 @@ class Music(commands.Cog):
 
         await ctx.send(f'Added {str(tracks[0])} to the queue.')
         await player.play(tracks[0])
+
+    @commands.command(name="stop")
+    async def stop(self, ctx):
+        player = self.bot.wavelink.get_player(ctx.guild.id)
+        
+        if not player.is_connected:
+            await ctx.send("Please join a voice channel first before executing this command!")
+        await player.stop()
+
+    @commands.command(name="volume")
+    async def set_volume(self, ctx, volume):
+        player = self.bot.wavelink.get_player(ctx.guild.id)
+
+        try:
+            if volume > 1000:
+                await ctx.send("Set the volume between 0 and 200")
+            elif volume < 1000:
+                await player.set_volume(volume)
+        except:
+            await ctx.send("I couldn't change the volume.. for some reason :/")
+            raise discord.DiscordException("Failed to change volume")
+
 
 def setup(bot):
     bot.add_cog(Music(bot))
